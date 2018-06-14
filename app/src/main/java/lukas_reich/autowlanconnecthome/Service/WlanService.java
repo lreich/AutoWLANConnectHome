@@ -10,6 +10,7 @@ import android.net.wifi.WifiManager;
 
 
 public class WlanService extends Service {
+
     private String wlanName;
     private WifiManager wifi = (WifiManager)getSystemService(Context.WIFI_SERVICE);
 

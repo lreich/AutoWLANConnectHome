@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import java.util.List;
+
 import lukas_reich.autowlanconnecthome.R;
 import lukas_reich.autowlanconnecthome.Service.WlanService;
 
 public class MainActivity extends AppCompatActivity {
 
+    private List<String> wlanNames; // contains all known WlanNames
     Intent mServiceIntent;
     private lukas_reich.autowlanconnecthome.Service.WlanService WlanService;
     Context ctx;
@@ -43,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-
     @Override
     protected void onDestroy() {
         stopService(mServiceIntent);
@@ -52,4 +54,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public List<String> getWlanNames() {
+        return this.wlanNames;
+    }
+
+    public List<String> addWlanName(String wlanName){ // Adds Wlan to known List
+        wlanNames.add(wlanName);
+        return this.wlanNames;
+    }
+
+    public List<String> deleteWlanName(String wlanName) { // Deletes Wlan from known List
+        wlanNames.remove(wlanName);
+        return this.wlanNames;
+    }
 }
